@@ -11,7 +11,7 @@ using UnityEngine;
 
 public class ParentSelection : SelectionBase
 {
-    private static int tournamentSize = 5;
+    private static int tournamentSize = 2;
 
     public ParentSelection() : base(2)
     {
@@ -26,7 +26,7 @@ public class ParentSelection : SelectionBase
         for (int i = 0; i < number; i++){
             // Get random sample of individuals from the population
             List<CarChromosome> pool = new List<CarChromosome>();
-            IList<int> randomIndexes = RandomizationProvider.Current.GetUniqueInts(number, 0, population.Count).ToList();
+            IList<int> randomIndexes = RandomizationProvider.Current.GetUniqueInts(tournamentSize, 0, population.Count).ToList();
 
             foreach (int index in randomIndexes) {
                 pool.Add(population[index]);
@@ -34,7 +34,6 @@ public class ParentSelection : SelectionBase
 
             // Select the best individual from the sample
             var individual = pool.OrderByDescending(p => p.Fitness).First();
-
             parents.Add(individual);
         }
 
