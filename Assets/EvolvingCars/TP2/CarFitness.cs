@@ -45,7 +45,8 @@ namespace GeneticSharp.Runner.UnityApp.Car
                 List<float> Forces = c.Forces;
                 float SumTotalForces = c.SumForces;
 
-                float completionWeight = 10f;
+                float completionWeight = 100f;
+
                 if(EllapsedTime == 0){
                     fitness = 0;
                 } else {
